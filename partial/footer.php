@@ -10,4 +10,6 @@
   crossorigin="anonymous"></script>
 <script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="lib/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"> </script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </html>

@@ -1,0 +1,25 @@
+.back{
+
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  top: 0;
+  
+}
+.back{
+  padding-top: 5%;
+}
+
+.navbar
+{
+  margin-bottom: 0px;
+}
+.signup , .signin{
+  color: white;
+}
+.event-list-top-padding{
+  margin-top: 5%;
+}
+.navbar-top li a{
+  color: blue;
+}

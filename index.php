@@ -1,80 +1,93 @@
-	<?php include 'partial/header.php';
-		  // include 'inc/User.php';
-		  include 'inc/Event.php';
+<?php include "partial/header.php"; 
+	  include 'inc/User.php';
 
-		  Session::checkSession();
+	  Session::checkLogin();
+?>
 
-	 ?>
+ <?php
 
-	 <?php 
-	 	 if (isset($_GET['action']) && $_GET['action'] == 'logout') {
-	 	 	Session::destroy();
-	 	 }
-	 ?>
+  	$user = new User();
+  	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
+  		
+  		$userRegi = $user->userRegistration($_POST);
+  	}
 
-	 <?php 
-	 	 $event = new Event();
-	 	$allEvent = $event->getAllEvent();
+   ?>
 
-	 ?>
+   <?php
+
+    $user = new User();
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
+      
+      $userLogin = $user->userLogin($_POST);
+    }
+
+   ?>
+
+<section class="back" style=" background-image: url(img/front.jpg); padding-bottom: 12.8%;" id="app">
 	<div class="container">
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a href="#" class="navbar-brand">Online Quiz System</a>
-				</div>
-				<ul class="nav navbar-nav pull-right">
-					<?php 
-						$id = Session::get('id');
-						$userlogin = Session::get('login');
-						$usertype = Session::get('type');
-						if ($userlogin == true && $usertype == 0) {	
-					?>
-						<li><a href="profile.php?id=<?php echo $id ?>">Profile</a></li>
-						<li><a href="?action=logout">Logout</a></li>
-					<?php } elseif ($userlogin == true && $usertype == 1) {
-					 ?>
-					 <li><a href="profile.php?id=<?php echo $id ?>">Profile</a></li>
-					 <li><a href="events.php">Go to Admin</a></li>
-					 <li><a href="?action=logout">Logout</a></li>
-					 <?php }else { ?>
-					<li><a href="login.php">Login</a></li>
-					<li><a href="register.php">Register</a></li>
-					<?php } ?>
-				</ul>
-			</div>
-		</nav>
-		<?php 
+		<div class="row">
+        <div class="col-md-6">
+        	<?php 
 
-	 	$loginmessage = Session::get("loginmessage");
+              		if (isset($userRegi)) {
+              			echo $userRegi;
+              		}
 
-	 	if (isset($loginmessage)) {
-	 		echo $loginmessage;
-	 	}
-	 	Session::set("loginmessage", NULL);
+              	?>
+            <h3 class="signup">Sign Up</h3>
+            <form action="" method="POST">
+                <div class="form-group">
+                    <br>
+                    <input type="text" v-model="user.name" name="name" class="form-control" placeholder="Your Name">
+                    
+                </div>
+                <div class="form-group">
+                    <br>
+                    <input type="text" v-model="user.user_name" name="username" class="form-control" placeholder="User Name">
+                    
+                </div>
+                <div class="form-group">
+                    <br>
+                    <input type="email" v-model="user.user_email" name="email" class="form-control" placeholder="Your Email">
+                    
+                </div>
+                <div class="form-group">
+                    <br>
+                    <input type="password" v-model="user.password" name="password" class="form-control" placeholder="Your Password">
+                </div>
+                <button type="submit" name="register" class="btn btn-block btn-success">Register</button>
+                
+            </form>
+            
+        </div>
+         <div class="col-md-6">
+         	<?php 
 
-	 ?>
-		<div class="panel panel-default">
-		<div class="panel-heading">
-			<h2>Event List<span class="pull-right"><strong>Welcome! </strong>
-				<?php 
+                  if (isset($userLogin)) {
+                    echo $userLogin;
+                  }
 
-					$name = Session::get("name");
-					if (isset($name)) {
-						echo $name;
-					}
-
-				?>
-			</span></h2>
-		</div>
-		<div class="panel-body">
-			<?php 
-				if ($allEvent) {
-				foreach ($allEvent as $event) {
-			?>
-			<a type="button" class="btn btn-primary btn-block" href=""><?php echo $event['event_name'] ?></a>
-			<?php } } ?>
-		</div>
+                ?>
+            <h3 class="signin">Sign In</h3>
+            <form action="" method="POST">
+                <div class="form-group">
+                    <br>
+                    <input type="email" name="email" v-model="user.email" class="form-control" placeholder="User Email">
+                    
+                </div>
+                <div class="form-group">
+                    <br>
+                    <input type="password" v-model="user.password" name="password" class="form-control" placeholder="Your Password">
+                   
+                </div>
+                 <button type="submit" name="login" class="btn btn-block  btn-success">Submit</button>
+            </form>
+        </div>
+        
+    </div>
+		
 	</div>
-	</div>
-	<?php include 'partial/footer.php'; ?>
+</section>
+
+<?php include "partial/footer.php"; ?>

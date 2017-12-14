@@ -18,43 +18,7 @@
     }
 
    ?>
-  <div class="container">
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a href="#" class="navbar-brand">Online Quiz System</a>
-        </div>
-        <ul class="nav navbar-nav pull-right">
-          <?php 
-            $id = Session::get('id');
-            $userlogin = Session::get('login');
-            $usertype = Session::get('type');
-            if ($userlogin == true && $usertype == 0) { 
-          ?>
-            <li><a href="profile.php?id=<?php echo $id ?>">Profile</a></li>
-            <li><a href="?action=logout">Logout</a></li>
-          <?php } elseif ($userlogin == true && $usertype == 1) {
-           ?>
-           <li><a href="">Profile</a></li>
-           <li><a href="">Go to Admin</a></li>
-           <li><a href="?action=logout">Logout</a></li>
-           <?php }else { ?>
-          <li><a href="login.php">Login</a></li>
-          <li><a href="register.php">Register</a></li>
-          <?php } ?>
-        </ul>
-      </div>
-    </nav>
-    <?php 
-
-    $loginmessage = Session::get("loginmessage");
-
-    if (isset($loginmessage)) {
-      echo $loginmessage;
-    }
-    Session::set("loginmessage", NULL);
-
-   ?>
+  <div class="container" style="margin-top: 40px;">
     <div class="panel panel-default">
     <div class="panel-heading">
       <h2>User Profile<span class="pull-right"><a type="button" class="btn btn-success" href="index.php">Back</a></button>
