@@ -44,6 +44,11 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
                 <div class="control-group">
                   <label class="control-label">Event Title:</label>
                   <div class="controls">
+                    <select class="form-control-select" v-model="QuizCreate.event_title">
+                      <option disabled value = "" > Please Select a Title</option>
+                      <option>Laravel one</option>
+                      <option>Laravel two</option>
+                      <option>Laravel three</option>
                     </select>
                   </div>
                 </div>
