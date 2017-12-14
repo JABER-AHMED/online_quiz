@@ -3,7 +3,7 @@
 include_once 'Session.php';
 include 'Database.php';
 
-class Event {
+class Question {
 	
 	private $db;
 	function __construct()
@@ -14,10 +14,10 @@ class Event {
 	public function addQuestion($data)
 	{
 		$question = $data['question'];
-		$option_one = $data['question_one'];
-		$option_two = $data['question_two'];
-		$option_three = $data['question_three'];
-		$option_four = $data['question_four'];
+		$option_one = $data['option_one'];
+		$option_two = $data['option_two'];
+		$option_three = $data['option_three'];
+		$option_four = $data['option_four'];
 		$correct_answer = $data['correct_answer'];
 		$id = Session::get('id');
 		$event_id = $data['event_id'];
@@ -56,6 +56,16 @@ class Event {
 	}
 
 	public function getAllQuestion()
+	{
+		$sql = "SELECT * FROM tbl_question";
+		$query = $this->db->pdo->prepare($sql);
+		$query->execute();
+		$result = $query->fetchAll();
+
+		return $result;
+	}
+
+	public function getEventID()
 	{
 		$sql = "SELECT * FROM tbl_event";
 		$query = $this->db->pdo->prepare($sql);
