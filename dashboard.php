@@ -1,6 +1,14 @@
 <?php include "partial/adminheader.php"; 
       include "partial/adminsidebar.php";
 
+      Session::checkSession();
+
+?>
+
+<?php
+if (isset($_GET['action']) && $_GET['action'] == 'logout') {
+  Session::destroy();
+}
 ?>
 
 <!--main-container-part-->
