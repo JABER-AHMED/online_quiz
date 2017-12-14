@@ -24,7 +24,8 @@
 
    ?>
 
-<section class="back" style=" background-image: url(img/front.jpg); padding-bottom: 12.8%;" id="app">
+<section class="back" style=" background-image: url(img/front.jpg); 
+padding-bottom: 12.8%;" id="app">
 	<div class="container">
 		<div class="row">
         <div class="col-md-6">
