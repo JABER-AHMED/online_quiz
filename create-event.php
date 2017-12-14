@@ -21,7 +21,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
 ?>
 
 
-
+<div id="create-event">
 <div id="content">
   <div id="content-header">
     <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Event</a> <a href="#">create event</a> </div>
@@ -68,5 +68,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
       </div>
     </div>
   </div>
+</div>
 </div>
 <?php include "partial/adminfooter.php"; ?>
