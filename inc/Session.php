@@ -36,14 +36,17 @@ class Session {
 	{
 		if (self::get("login") == false) {
 			self::destroy();
-			header("Location: login.php");
+			header("Location: index.php");
 		}
 	}
 
 	public static function checkLogin()
 	{
-		if (self::get("login") == true) {
-			header("Location: index.php");
+		if (self::get("login") == true && self::get('type') == 0) {
+			header("Location: eventslist.php");
+		}
+		elseif (self::get("login") == true && self::get('type') == 1) {
+			header("Location: events.php");
 		}
 	}
 
@@ -51,7 +54,7 @@ class Session {
 	{
 		session_destroy();
 		session_unset();
-		header("Location: login.php");
+		header("Location: index.php");
 	}
 }
 
