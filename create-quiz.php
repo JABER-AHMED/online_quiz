@@ -44,17 +44,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
                 <div class="control-group">
                   <label class="control-label">Event Title:</label>
                   <div class="controls">
-
-                    <select name="event_id" class="form-control-select" v-model="QuizCreate.event-title">
-                    <?php if(!count($eventID)){?>
-                      <option>Select</option>
-                    <?php } else { ?> <!-- end of if and start of else -->
-                      <option checked>Select</option>
-                    <?php foreach ($eventID as $e ) { ?> <!--foreach start -->
-                      <option value="<?php echo $e['event_id']; ?>"><?php echo  $e['event_name'];?></option>
-                      
-                    <?php } } ?>  <!--end of foreach and else -->
-
                     </select>
                   </div>
                 </div>
@@ -67,25 +56,25 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
                 <div class="control-group">
                   <label class="control-label">Option 1:</label>
                   <div class="controls">
-                    <input type="text" name="option_one" class="form-control" v-model="QuizCreate.optionone"/>
+                    <input type="text" name="optionone" class="form-control" v-model="QuizCreate.optionone"/>
                   </div>
                 </div>
                 <div class="control-group">
                   <label class="control-label">Option 2:</label>
                   <div class="controls">
-                    <input type="text" name="option_two" class="form-control" v-model="QuizCreate.optiontwo"/>
+                    <input type="text" name="optiontwo" class="form-control" v-model="QuizCreate.optiontwo"/>
                   </div>
                 </div>
                 <div class="control-group">
                   <label class="control-label">Option 3:</label>
                   <div class="controls">
-                    <input type="text" name="option_three" class="form-control" v-model="QuizCreate.optionthree"/>
+                    <input type="text" name="optionthree" class="form-control" v-model="QuizCreate.optionthree"/>
                   </div>
                 </div>
                 <div class="control-group">
                   <label class="control-label">Option 4:</label>
                   <div class="controls">
-                    <input type="text" name="option_four" class="form-control" v-model="QuizCreate.optionfour"/>
+                    <input type="text" name="optionfour" class="form-control" v-model="QuizCreate.optionfour"/>
                   </div>
                 </div>
                  <div class="control-group">
@@ -96,7 +85,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
                 </div>
                 <div class="control-group">
                   <div class="controls">
-                    <button type="submit" name="addQues" class="btn btn-block btn-primary form-control-button">Submit</button>
+                    <button type="submit" @click.prevent="storeCreateQuiz" class="btn btn-block btn-primary form-control-button">Submit</button>
                   </div>
                 </div>
               </div>

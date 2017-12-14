@@ -58,7 +58,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
                 </div>
                 <div class="control-group">
                   <div class="controls">
-                    <button type="submit" name="event" @click.prevent="create-evenT" class="btn btn-primary form-control-button">Submit</button>
+                    <button type="submit" @click.prevent="storeCreateEvent" class="btn btn-primary form-control-button">Submit</button>
                   </div>
                 </div>
               </div>
