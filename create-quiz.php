@@ -1,6 +1,6 @@
 <?php include "partial/adminheader.php"; 
       include "partial/adminsidebar.php";
-      include "inc/Event.php";
+      //include "inc/Event.php";
       include "inc/Question.php";
 
       Session::checkSession();
@@ -18,6 +18,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
 
       $addQues = $question->addQuestion($_POST);
   }
+    $readEventId = $question->getEventId();
 
 ?>
 <div id="content">
@@ -30,7 +31,14 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
       <div class="span12">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-pencil"></i> </span>
-            
+            <?php 
+
+              if (isset($addQues)) {
+                  
+                  echo $addQues;
+              }
+
+            ?>
           </div>
           <div class="widget-content nopadding">
             <form id="form-wizard" class="form-horizontal" method="post">
@@ -38,11 +46,14 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
                 <div class="control-group">
                   <label class="control-label">Event Title:</label>
                   <div class="controls">
-
-                    <select class="form-control-select" v-model="QuizCreate.event-title">
-                      <option value>Laravel one</option>
-                      <option>Laravel two</option>
-                      <option>Laravel three</option>
+                    <select name="event_id" class="form-control-select" v-model="QuizCreate.event-title">
+                       <?php if(count($readEventId)){?>
+                <?php foreach($readEventId as $r){?>
+                      <option value="<?php echo $r['event_id'];?>"><?php echo $r['event_name'];?></option>
+                <?php } ?> <!--  end of foreach       -->
+              <?php } else {?>  <!--end of if and start of else  -->
+                      <option>Select</option>
+              <?php } ?>  <!-- end of else condition -->  
                     </select>
                   </div>
                 </div>

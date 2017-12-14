@@ -3,7 +3,7 @@
 include_once 'Session.php';
 include 'Database.php';
 
-class Event {
+class Question {
 	
 	private $db;
 	function __construct()
@@ -14,10 +14,10 @@ class Event {
 	public function addQuestion($data)
 	{
 		$question = $data['question'];
-		$option_one = $data['question_one'];
-		$option_two = $data['question_two'];
-		$option_three = $data['question_three'];
-		$option_four = $data['question_four'];
+		$option_one = $data['option_one'];
+		$option_two = $data['option_two'];
+		$option_three = $data['option_three'];
+		$option_four = $data['option_four'];
 		$correct_answer = $data['correct_answer'];
 		$id = Session::get('id');
 		$event_id = $data['event_id'];
@@ -45,11 +45,11 @@ class Event {
 
 		if ($result) {
 			
-			$message = "<div class='alert alert-success'><strong>Success! </strong>Successfully Event Created.</div>";
+			$message = "<div class='alert alert-success'><strong>Success! </strong>Successfully Quiz Created.</div>";
 
 			return $message;
 		}else{
-			$message = "<div class='alert alert-danger'><strong>Error! </strong>There is something wrong! Can't create event</div>";
+			$message = "<div class='alert alert-danger'><strong>Error! </strong>There is something wrong! Can't create Quiz!</div>";
 
 			return $message;
 		}
@@ -57,7 +57,7 @@ class Event {
 
 	public function getAllQuestion()
 	{
-		$sql = "SELECT * FROM tbl_event";
+		$sql = "SELECT * FROM tbl_question";
 		$query = $this->db->pdo->prepare($sql);
 		$query->execute();
 		$result = $query->fetchAll();
@@ -65,12 +65,23 @@ class Event {
 		return $result;
 	}
 
+	public function getEventId()
+	{
+		$sql = "SELECT * FROM tbl_event";
+		$query = $this->db->pdo->prepare($sql);
+		$query->execute();
+		$result = $query->fetchAll();
+
+		return $result;
+
+	}
+
 
 	public function questionDelete($id)
 	{
-		$sql = "DELETE FROM tbl_event WHERE event_id = :id";
+		$sql = "DELETE FROM tbl_question WHERE question_id = :question_id";
 		$query = $this->db->pdo->prepare($sql);
-		$query->bindValue(':id', $id);
+		$query->bindValue(':question_id', $id);
 
 		$result = $query->execute();
 
