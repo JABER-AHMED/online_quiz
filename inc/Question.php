@@ -64,8 +64,6 @@ class Question {
 
 		return $result;
 	}
-
-	public function getEventId()
 	{
 		$sql = "SELECT * FROM tbl_event";
 		$query = $this->db->pdo->prepare($sql);

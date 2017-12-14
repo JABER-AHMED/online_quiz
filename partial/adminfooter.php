@@ -23,7 +23,9 @@
 <script src="lib/js/select2.min.js"></script> 
 <script src="lib/js/matrix.popover.js"></script> 
 <script src="lib/js/jquery.dataTables.min.js"></script> 
-<script src="lib/js/matrix.tables.js"></script> 
+<script src="lib/js/matrix.tables.js"></script>
+<script src="lib/js/vue.js"></script>
+<script src="lib/js/event-js.js"></script> 
 
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to
