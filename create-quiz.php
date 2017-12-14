@@ -1,6 +1,6 @@
 <?php include "partial/adminheader.php"; 
       include "partial/adminsidebar.php";
-      include "inc/Event.php";
+      //include "inc/Event.php";
       include "inc/Question.php";
 
       Session::checkSession();
@@ -20,6 +20,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
 
       $addQues = $question->addQuestion($_POST);
   }
+  $eventID = $question->getEventID();
 
 ?>
 <div id="create-quiz">
@@ -33,7 +34,9 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
       <div class="span12">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-pencil"></i> </span>
-            
+          <?php if (isset($addQues)) {
+              echo $addQues;
+          } ?>
           </div>
           <div class="widget-content nopadding">
             <form id="form-wizard" class="form-horizontal" method="post">
@@ -41,11 +44,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
                 <div class="control-group">
                   <label class="control-label">Event Title:</label>
                   <div class="controls">
-                    <select class="form-control-select" v-model="QuizCreate.event_title">
-                      <option disabled value = "" > Please Select a Title</option>
-                      <option>Laravel one</option>
-                      <option>Laravel two</option>
-                      <option>Laravel three</option>
                     </select>
                   </div>
                 </div>
