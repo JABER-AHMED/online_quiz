@@ -7,6 +7,8 @@
 
 ?>
 
+
+
 <?php
 if (isset($_GET['action']) && $_GET['action'] == 'logout') {
   Session::destroy();
@@ -21,6 +23,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
   $eventID = $question->getEventID();
 
 ?>
+<div id="create-quiz">
 <div id="content">
   <div id="content-header">
     <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Form elements</a> <a href="#" class="current">Form wizard</a> </div>
@@ -104,5 +107,5 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
     </div>
   </div>
 </div>
-
+</div> 
 <?php include "partial/adminfooter.php"; ?>
