@@ -46,7 +46,7 @@ class Session {
 			header("Location: eventslist.php");
 		}
 		elseif (self::get("login") == true && self::get('type') == 1) {
-			header("Location: events.php");
+			header("Location: eventslist.php");
 		}
 	}
 
