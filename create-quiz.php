@@ -20,7 +20,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
 
       $addQues = $question->addQuestion($_POST);
   }
-  $eventID = $question->getEventID();
 
 ?>
 <div id="create-quiz">
@@ -34,9 +33,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
       <div class="span12">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-pencil"></i> </span>
-          <?php if (isset($addQues)) {
-              echo $addQues;
-          } ?>
           </div>
           <div class="widget-content nopadding">
             <form id="form-wizard" class="form-horizontal" method="post">

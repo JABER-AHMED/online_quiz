@@ -45,11 +45,11 @@ class Question {
 
 		if ($result) {
 			
-			$message = "<div class='alert alert-success'><strong>Success! </strong>Successfully Event Created.</div>";
+			$message = "<div class='alert alert-success'><strong>Success! </strong>Successfully Quiz Created.</div>";
 
 			return $message;
 		}else{
-			$message = "<div class='alert alert-danger'><strong>Error! </strong>There is something wrong! Can't create event</div>";
+			$message = "<div class='alert alert-danger'><strong>Error! </strong>There is something wrong! Can't create Quiz!</div>";
 
 			return $message;
 		}
@@ -64,8 +64,6 @@ class Question {
 
 		return $result;
 	}
-
-	public function getEventID()
 	{
 		$sql = "SELECT * FROM tbl_event";
 		$query = $this->db->pdo->prepare($sql);
@@ -73,14 +71,15 @@ class Question {
 		$result = $query->fetchAll();
 
 		return $result;
+
 	}
 
 
 	public function questionDelete($id)
 	{
-		$sql = "DELETE FROM tbl_event WHERE event_id = :id";
+		$sql = "DELETE FROM tbl_question WHERE question_id = :question_id";
 		$query = $this->db->pdo->prepare($sql);
-		$query->bindValue(':id', $id);
+		$query->bindValue(':question_id', $id);
 
 		$result = $query->execute();
 
