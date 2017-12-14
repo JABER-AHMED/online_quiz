@@ -11,15 +11,11 @@
 <script src="lib/js/jquery.min.js"></script> 
 <script src="lib/js/jquery.ui.custom.js"></script> 
 <script src="lib/js/bootstrap.min.js"></script> 
-<script src="lib/js/jquery.flot.min.js"></script> 
-<script src="lib/js/jquery.flot.resize.min.js"></script> 
 <script src="lib/js/jquery.peity.min.js"></script> 
 <script src="lib/js/fullcalendar.min.js"></script> 
 <script src="lib/js/matrix.js"></script> 
-<script src="lib/js/matrix.dashboard.js"></script> 
 <script src="lib/js/jquery.gritter.min.js"></script> 
 <script src="lib/js/matrix.interface.js"></script> 
-<script src="lib/js/matrix.chat.js"></script> 
 <script src="lib/js/jquery.validate.js"></script> 
 <script src="lib/js/matrix.form_validation.js"></script> 
 <script src="lib/js/jquery.wizard.js"></script> 

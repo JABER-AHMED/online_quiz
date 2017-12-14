@@ -6,9 +6,9 @@
     <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Events</span> <span class="label label-important">3</span></a>
       <ul>
 
-        <li><a href="create-event.html">Create Event</a></li>
-        <li><a href="event-list.html">Event list</a></li>
-        <li><a href="create-quiz.html">Create Quiz</a></li>
+        <li><a href="create-event.php">Create Event</a></li>
+        <li><a href="event-list.php">Event list</a></li>
+        <li><a href="create-quiz.php">Create Quiz</a></li>
         
       </ul>
     </li>

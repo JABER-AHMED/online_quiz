@@ -1,63 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>Online Quiz</title>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
-<link rel="stylesheet" href="css/uniform.css" />
-<link rel="stylesheet" href="css/select2.css"/>
-<link rel="stylesheet" href="css/matrix-style.css" />
-<link rel="stylesheet" href="css/matrix-media.css" />
-<link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-</head>
-<body>
+<?php include "partial/adminheader.php"; 
+      include "partial/adminsidebar.php";
+      include "inc/Event.php";
 
-<div id="event-list">
-  <!--Header-part-->
-<div id="header">
-  <h1><a href="dashboard.html">Online Quiz</a></h1>
-</div>
-<!--close-Header-part--> 
+      Session::checkSession();
 
-<!--top-Header-menu-->
-<div id="user-nav" class="navbar navbar-inverse">
-  <ul class="nav">
-    <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome User</span><b class="caret"></b></a>
-      <ul class="dropdown-menu">
-        <li><a href="#"><i class="icon-user"></i> My Profile</a></li>
-        <li class="divider"></li>
-        <li><a href="#"><i class="icon-check"></i> My Tasks</a></li>
-        <li class="divider"></li>
-        <li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
-      </ul>
-    </li>
-    <li class=""><a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
-  </ul>
-</div>
+?>
 
+<?php
+if (isset($_GET['action']) && $_GET['action'] == 'logout') {
+  Session::destroy();
+}
+?>
+<?php
+$event = new Event();
+$allEvent = $event->getAllEvent();
+?>
+<?php 
 
+      if (isset($_GET['action']) && $_GET['action'] == 'delete') {
+          
+          $eventid = (int)$_GET['id'];
 
-<!--sidebar-menu-->
+          $eventdelete = $event->eventDelete($eventid);
+      }
+?>
 
-<div id="sidebar"> <a href="#" class="visible-phone"><i class="icon icon-th"></i>Tables</a>
-  <ul>
-    <li><a href="dashboard.html"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
-
-    <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Events</span> <span class="label label-important">3</span></a>
-      <ul>
-         <li><a href="create-event.html">Create Event</a></li>
-        <li><a href="event-list.html">Event list</a></li>
-        <li><a href="create-quiz.html">Create Quiz</a></li>
-      </ul>
-    </li>
-   
-    
-    
-  </ul>
-</div>
 <div id="content">
   <div id="content-header">
     <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Tables</a> </div>
@@ -72,6 +39,13 @@
           
         
 
+         <?php 
+
+        if (isset($eventdelete)) {
+          echo $eventdelete;
+        }
+
+    ?>
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
             <h5>Data table</h5>
@@ -87,19 +61,18 @@
                 </tr>
               </thead>
               <tbody>
-                <tr class="gradeX">
-                  <td>1</td>
-                  <td>Laravel Quiz 1</td>
-                  <td>12/12/2017</td>
-                  <td ><button type="delete" @click.prevent="" class="btn btn-primary">Delete</button></td>
-                </tr>
-                <tr class="gradeC">
-                  <td>2</td>
-                  <td>Laravel Quiz 2</td>
-                  <td>12/12/2017</td>
-                  <td ><button type="delete" @click.prevent="" class="btn btn-primary">Delete</button></td>
-                </tr>
-                 
+             <?php
+                foreach ($allEvent as $event) {
+            ?>
+            <tr>
+              <td><?php echo $event['event_id'] ?></td>
+              <td><?php echo $event['event_name'] ?></td>
+              <td><?php echo $event['event_date'] ?></td>
+              <td>
+                <a type="button" class="btn btn-danger" href="event-list.php?action=delete&id=<?php echo $event['event_id'] ?>" name="delete">Delete</a>
+              </td>
+            </tr>
+            <?php } ?> 
               </tbody>
             </table>
           </div>
@@ -108,21 +81,4 @@
     </div>
   </div>
 </div>
-<!--Footer-part-->
-<div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Online Quiz Admin. </div>
-</div>
-<!--end-Footer-part-->
-
-</div>
-
-<script src="js/jquery.min.js"></script> 
-<script src="js/jquery.ui.custom.js"></script> 
-<script src="js/bootstrap.min.js"></script> 
-<script src="js/jquery.uniform.js"></script> 
-<script src="js/select2.min.js"></script> 
-<script src="js/jquery.dataTables.min.js"></script> 
-<script src="js/matrix.js"></script> 
-<script src="js/matrix.tables.js"></script>
-</body>
-</html>
+<?php include "partial/adminfooter.php"; ?>

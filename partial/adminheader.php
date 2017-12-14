@@ -14,7 +14,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="lib/css/bootstrap.min.css" />
 <link rel="stylesheet" href="lib/css/bootstrap-responsive.min.css" />
-<link rel="stylesheet" href="lib/css/fullcalendar.css" />
+<link rel="stylesheet" href="lib/css/uniform.css" />
+<link rel="stylesheet" href="lib/css/select2.css"/>
 <link rel="stylesheet" href="lib/css/matrix-style.css" />
 <link rel="stylesheet" href="lib/css/matrix-media.css" />
 <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
@@ -37,12 +38,10 @@
         <li><a href="#"><i class="icon-user"></i> My Profile</a></li>
         <li class="divider"></li>
         <li><a href="#"><i class="icon-check"></i> My Tasks</a></li>
-        <li class="divider"></li>
-        <li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
       </ul>
     </li>
 
-    <li class=""><a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+    <li class=""><a title="" href="?action=logout"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
 <!--close-top-Header-menu-->
