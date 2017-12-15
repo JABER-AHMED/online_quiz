@@ -150,7 +150,7 @@ class User {
 
 	public function getUserDataById($id)
 	{
-		$sql = "SELECT * FROM tbl_user WHERE id = :id LIMIT 1";
+		$sql = "SELECT * FROM tbl_user WHERE id = :id";
 		$query = $this->db->pdo->prepare($sql);
 		$query->bindValue(':id', $id);
 		$query->execute();
