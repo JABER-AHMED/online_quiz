@@ -23,6 +23,14 @@ $allEvent = $event->getAllEvent();
 
           $eventdelete = $event->eventDelete($eventid);
       }
+
+      if (isset($_GET['action']) && $_GET['action'] == 'edit') {
+          
+          $eventid = (int)$_GET['id'];
+
+          $eventdelete = $event->getEventbyID($eventid);
+      }
+
 ?>
 
 <div id="content">
@@ -69,6 +77,7 @@ $allEvent = $event->getAllEvent();
               <td><?php echo $event['event_name'] ?></td>
               <td><?php echo $event['event_date'] ?></td>
               <td>
+                <a type="button" class="btn btn-default" href="update-event.php?action=edit&id=<?php echo $event['event_id']; ?>" name="edit">Edit</a>
                 <a type="button" class="btn btn-danger" href="event-list.php?action=delete&id=<?php echo $event['event_id'] ?>" name="delete">Delete</a>
               </td>
             </tr>
