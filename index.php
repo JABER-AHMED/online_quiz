@@ -40,22 +40,22 @@ padding-bottom: 12.8%;" id="app">
             <form action="" method="POST">
                 <div class="form-group">
                     <br>
-                    <input type="text" v-model="user.name" name="name" class="form-control" placeholder="Your Name">
+                    <input type="text"  name="name" class="form-control" placeholder="Your Name">
                     
                 </div>
                 <div class="form-group">
                     <br>
-                    <input type="text" v-model="user.user_name" name="username" class="form-control" placeholder="User Name">
+                    <input type="text"  name="username" class="form-control" placeholder="User Name">
                     
                 </div>
                 <div class="form-group">
                     <br>
-                    <input type="email" v-model="user.user_email" name="email" class="form-control" placeholder="Your Email">
+                    <input type="email"  name="email" class="form-control" placeholder="Your Email">
                     
                 </div>
                 <div class="form-group">
                     <br>
-                    <input type="password" v-model="user.password" name="password" class="form-control" placeholder="Your Password">
+                    <input type="password"  name="password" class="form-control" placeholder="Your Password">
                 </div>
                 <button type="submit" name="register" class="btn btn-block btn-success">Register</button>
                 
@@ -74,12 +74,12 @@ padding-bottom: 12.8%;" id="app">
             <form action="" method="POST">
                 <div class="form-group">
                     <br>
-                    <input type="email" name="email" v-model="user.email" class="form-control" placeholder="User Email">
+                    <input type="email" name="email"  class="form-control" placeholder="User Email">
                     
                 </div>
                 <div class="form-group">
                     <br>
-                    <input type="password" v-model="user.password" name="password" class="form-control" placeholder="Your Password">
+                    <input type="password"  name="password" class="form-control" placeholder="Your Password">
                    
                 </div>
                  <button type="submit" name="login" class="btn btn-block  btn-success">Submit</button>
