@@ -9,8 +9,6 @@
         <li><a href="create-event.php">Create Event</a></li>
         <li><a href="event-list.php">Event List</a></li>
         <li><a href="create-quiz.php">Create Quiz</a></li>
-        <li><a href="question-list.php">Question List</a></li>
-        
       </ul>
     </li>
     <li> <a href="allquestions.php"><i class="icon icon-th-list"></i> <span>All Questions</span> 
