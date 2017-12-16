@@ -9,6 +9,7 @@
         <li><a href="create-event.php">Create Event</a></li>
         <li><a href="event-list.php">Event list</a></li>
         <li><a href="create-quiz.php">Create Quiz</a></li>
+        <li><a href="question-list.php">Create Quiz</a></li>
         
       </ul>
     </li>
