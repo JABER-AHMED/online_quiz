@@ -13,6 +13,8 @@
         
       </ul>
     </li>
+    <li> <a href="allquestions.php"><i class="icon icon-th-list"></i> <span>All Questions</span> 
+    </li>
   </ul>
 </div>
 <!--sidebar-menu-->
