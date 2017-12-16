@@ -15,21 +15,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
 $event = new Event();
 $allEvent = $event->getAllEvent();
 ?>
-<?php 
-
-      if (isset($_GET['action']) && $_GET['action'] == 'delete') {
-          
-          $eventid = (int)$_GET['id'];
-
-          $eventdelete = $event->eventDelete($eventid);
-      }
-
-      if (isset($_GET['action']) && $_GET['action'] == 'edit') {
-          
-          $eventid = (int)$_GET['id'];
-
-          $eventdelete = $event->getEventbyID($eventid);
-      }
+<?php
 
 ?>
 
