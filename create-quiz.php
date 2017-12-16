@@ -44,7 +44,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
                   <div class="controls">
 
 
-                    <select name="event_id" class="form-control-select" v-model="QuizCreate.event-title">
+                    <select name="event_id" class="form-control-select">
                     <?php if(!count($eventID)){?>
                       <option>Select</option>
                     <?php } else { ?> <!-- end of if and start of else -->

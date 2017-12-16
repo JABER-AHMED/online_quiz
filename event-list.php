@@ -62,10 +62,10 @@ $allEvent = $event->getAllEvent();
             <table class="table table-bordered data-table">
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Event Name</th>
-                  <th>Event Date</th>
-                  <th>Action</th>
+                  <th width="5%;">ID</th>
+                  <th width="50%;">Event Name</th>
+                  <th width="15%;">Event Date</th>
+                  <th width="30%;">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -77,8 +77,9 @@ $allEvent = $event->getAllEvent();
               <td><?php echo $event['event_name'] ?></td>
               <td><?php echo $event['event_date'] ?></td>
               <td>
-                <a type="button" class="btn btn-default" href="update-event.php?action=edit&id=<?php echo $event['event_id']; ?>" name="edit">Edit</a>
-                <a type="button" class="btn btn-danger" href="event-list.php?action=delete&id=<?php echo $event['event_id'] ?>" name="delete">Delete</a>
+                <a type="button" class="btn btn-default" href="update-event.php?action=edit&id=<?php echo $event['event_id']; ?>" name="edit"><i class="icon icon-edit"></i> Edit</a>
+                <a type="button" class="btn btn-danger" href="event-list.php?action=delete&id=<?php echo $event['event_id'] ?>" name="delete"><i class="icon icon-trash"></i> Delete</a>
+                <a type="button" class="btn btn-success" href="question-list.php?action=view&id=<?php echo $event['event_id'] ?>" name="view"><i class="icon icon-eye-open"></i> View Questions</a>
               </td>
             </tr>
             <?php } ?> 

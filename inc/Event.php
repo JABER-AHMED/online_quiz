@@ -129,6 +129,12 @@ class Event {
 
 		$result = $query->execute();
 
+		$sql1 = "DELETE FROM tbl_question WHERE event_id = :id";
+		$query = $this->db->pdo->prepare($sql1);
+		$query->bindValue(':id', $id);
+
+		$result = $query->execute();
+
 		if ($result) {
 			
 			$deletemessage = "<div class='alert alert-success'><strong>Success! </strong>Successfully Event Deleted.</div>";
