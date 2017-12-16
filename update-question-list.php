@@ -36,7 +36,7 @@ $allEvent = $event->getAllEvent();
 <div id="content">
   <div id="content-header">
     <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Tables</a> </div>
-    <h1>Question List</h1>
+    <h1>Update Question List</h1>
   </div>
   <div class="container-fluid">
     <hr>
