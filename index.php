@@ -1,4 +1,4 @@
-<?php include "partial/header.php"; 
+<?php include "partial/header.php";
 	  include 'inc/User.php';
 
 	  Session::checkLogin();
