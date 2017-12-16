@@ -58,7 +58,8 @@ $allEvent = $event->getAllEvent();
                   <th>Option 3</th>
                   <th>Option 4</th>
                   <th>Correct Ans</th>
-                  <th>Action</th>
+                  <th>Event Name</th>
+                
                 </tr>
               </thead>
               <tbody>
@@ -70,7 +71,8 @@ $allEvent = $event->getAllEvent();
                   <td>three</td>
                   <td>four</td>
                   <td>one</td>
-                  <td ><button type="edit" class="btn btn-default"> Edit </button> <button type="delete"  class="btn btn-danger"> Delete</button></td>
+                  <td>Laravel 1</td>
+        
                 </tr>
                 <tr class="gradeC">
                   <td>2</td>
@@ -80,7 +82,7 @@ $allEvent = $event->getAllEvent();
                   <td>three</td>
                   <td>four</td>
                   <td>one</td>
-                  <td ><button type="edit"  class="btn btn-default"> Edit </button> <button type="delete"  class="btn btn-danger">Delete</button></td>
+                  <td>Laravel 1</td>
                 </tr>
                 <tr class="gradeC">
                   <td>3</td>
@@ -89,8 +91,9 @@ $allEvent = $event->getAllEvent();
                   <td>two</td>
                   <td>three</td>
                   <td>four</td>
-                  <td>one</td>
-                  <td ><button type="edit"  class="btn btn-default">Edit </button> <button type="delete" class="btn btn-danger">Delete</button></td>
+                   <td>one</td>
+                  <td>Laravel 1</td>
+                 
                 </tr>
                 <tr class="gradeC">
                   <td>4</td>
@@ -100,7 +103,8 @@ $allEvent = $event->getAllEvent();
                   <td>three</td>
                   <td>four</td>
                   <td>one</td>
-                  <td ><button type="edit" class="btn btn-default">Edit </button> <button type="delete" class="btn btn-danger">Delete</button></td>
+                  <td>Laravel 1</td>
+                  
                 </tr>
                  
               </tbody>
