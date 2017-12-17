@@ -1,4 +1,4 @@
-<?php ob_start();
+<?php
 include 'partial/header.php';
 // include 'inc/User.php';
 include 'inc/Event.php';

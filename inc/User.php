@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 include_once 'Session.php';
 include 'Database.php';
 
