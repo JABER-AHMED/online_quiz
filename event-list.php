@@ -1,8 +1,8 @@
-<?php include "partial/adminheader.php"; 
-      include "partial/adminsidebar.php";
-      include "inc/Event.php";
-
-      Session::checkSession();
+<?php ob_start();
+include "partial/adminheader.php";
+include "partial/adminsidebar.php";
+include "inc/Event.php";
+Session::checkSession();
 
 ?>
 
