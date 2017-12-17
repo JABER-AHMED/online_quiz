@@ -1,7 +1,7 @@
-  <?php include 'partial/header.php';
-        include 'inc/User.php';
-
-        Session::checkLogin();
+<?php ob_start();
+include 'partial/header.php';
+include 'inc/User.php';
+Session::checkLogin();
 
   ?>
 

@@ -1,10 +1,9 @@
-	<?php include 'partial/header.php';
-		  // include 'inc/User.php';
-		  include 'inc/Event.php';
-
-		  Session::checkSession();
-
-	 ?>
+<?php ob_start();
+include 'partial/header.php';
+// include 'inc/User.php';
+include 'inc/Event.php';
+Session::checkSession();
+?>
 
 	 <?php 
 	 	 if (isset($_GET['action']) && $_GET['action'] == 'logout') {
