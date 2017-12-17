@@ -44,13 +44,10 @@ $allEvent = $event->getAllEvent();
         }
 
     ?>
-
-    <a type="button" class="btn btn-primary btn-block" href="">01. PHP Online Quiz</a>
-      <a type="button" class="btn btn-primary btn-block" href="">02. Javascript Online Quiz</a>
-      <a type="button" class="btn btn-primary btn-block" href="">03. HTML Online Quiz</a>
-      <a type="button" class="btn btn-primary btn-block" href="">04. CSS Online Quiz</a>
-      <a type="button" class="btn btn-primary btn-block" href="">05. Laravel Online Quiz</a>
-      <a type="button" class="btn btn-primary btn-block" href="">06. Vuejs Online Quiz</a>
+    <?php foreach ($allEvent as $eventlist) {
+ ?>
+    <a type="button" class="btn btn-primary btn-block" href=""><?php echo $eventlist['event_name'] ?></a>
+    <?php } ?>
     </div>
   </div>
 </div>

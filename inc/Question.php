@@ -57,7 +57,7 @@ class Question {
 
 	public function getAllQuestion()
 	{
-		$sql = "SELECT * FROM tbl_question";
+		$sql = "SELECT tbl_question.question,tbl_question.option_one,tbl_question.option_two,tbl_question.option_three,tbl_question.option_four,tbl_question.correct_answer,tbl_event.event_name FROM tbl_question,tbl_event WHERE tbl_question.event_id = tbl_event.event_id";
 		$query = $this->db->pdo->prepare($sql);
 		$query->execute();
 		$result = $query->fetchAll();

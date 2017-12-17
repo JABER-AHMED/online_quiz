@@ -1,6 +1,6 @@
 <?php include "partial/adminheader.php"; 
       include "partial/adminsidebar.php";
-      include "inc/Event.php";
+      include "inc/Question.php";
 
       Session::checkSession();
 
@@ -12,8 +12,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
 }
 ?>
 <?php
-$event = new Event();
-$allEvent = $event->getAllEvent();
+$question = new Question();
+$getEventQuestion = $question->getAllQuestion();
 ?>
 <?php
 
@@ -45,54 +45,24 @@ $allEvent = $event->getAllEvent();
                   <th>Option 4</th>
                   <th>Correct Ans</th>
                   <th>Event Name</th>
-                
                 </tr>
               </thead>
               <tbody>
+
+                <?php 
+                  foreach ($getEventQuestion as $EventandQuestion) {   
+                ?>
                 <tr class="gradeX">
                   <td>1</td>
-                  <td>what is java ?</td>
-                  <td>one</td>
-                  <td>two</td>
-                  <td>three</td>
-                  <td>four</td>
-                  <td>one</td>
-                  <td>Laravel 1</td>
-        
+                  <td><?php echo $EventandQuestion['question']; ?></td>
+                  <td><?php echo $EventandQuestion['option_one'];?></td>
+                  <td><?php echo $EventandQuestion['option_two']; ?></td>
+                  <td><?php echo $EventandQuestion['option_three']; ?></td>
+                  <td><?php echo $EventandQuestion['option_four']; ?></td>
+                  <td><?php echo $EventandQuestion['correct_answer']; ?></td>
+                  <td><?php echo $EventandQuestion['event_name']; ?></td>
                 </tr>
-                <tr class="gradeC">
-                  <td>2</td>
-                  <td>what is vue ?</td>
-                  <td>one</td>
-                  <td>two</td>
-                  <td>three</td>
-                  <td>four</td>
-                  <td>one</td>
-                  <td>Laravel 1</td>
-                </tr>
-                <tr class="gradeC">
-                  <td>3</td>
-                  <td>what is cpp ?</td>
-                  <td>one</td>
-                  <td>two</td>
-                  <td>three</td>
-                  <td>four</td>
-                   <td>one</td>
-                  <td>Laravel 1</td>
-                 
-                </tr>
-                <tr class="gradeC">
-                  <td>4</td>
-                  <td>what is english ?</td>
-                  <td>one</td>
-                  <td>two</td>
-                  <td>three</td>
-                  <td>four</td>
-                  <td>one</td>
-                  <td>Laravel 1</td>
-                  
-                </tr>
-                 
+                <?php } ?>
               </tbody>
             </table>
           </div>

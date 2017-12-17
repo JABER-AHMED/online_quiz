@@ -47,18 +47,18 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
                 <div class="control-group">
                   <label class="control-label">Event Name</label>
                   <div class="controls">
-                    <input type="text" name="event_name" v-model="EventCreate.event_name" class="form-control" placeholder="Event Title" />
+                    <input type="text" name="event_name" class="form-control" placeholder="Event Title" />
                   </div>
                 </div>
                 <div class="control-group">
                   <label class="control-label">Event Date</label>
                   <div class="controls">
-                    <input type="date" v-model="EventCreate.event_date" name="event_date" class="form-control" />
+                    <input type="date" name="event_date" class="form-control" />
                   </div>
                 </div>
                 <div class="control-group">
                   <div class="controls">
-                    <button type="submit" @click.prevent="storeCreateEvent" class="btn btn-primary form-control-button">Submit</button>
+                    <button type="submit" name="event" class="btn btn-primary form-control-button">Submit</button>
                   </div>
                 </div>
               </div>
