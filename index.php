@@ -1,9 +1,8 @@
-<?php include "partial/header.php";
-	  include 'inc/User.php';
-
-	  Session::checkLogin();
+<?php ob_start ();
+include "partial/header.php";
+include 'inc/User.php';
+Session::checkLogin();
 ?>
-
  <?php
 
   	$user = new User();
@@ -90,5 +89,4 @@ padding-bottom: 12.8%;" id="app">
 		
 	</div>
 </section>
-
-<?php include "partial/footer.php"; ?>
+<?php include "partial/footer.php";?>
