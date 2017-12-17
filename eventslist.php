@@ -1,4 +1,5 @@
-<?php include 'partial/header.php';
+<?php ob_start();
+include 'partial/header.php';
 // include 'inc/User.php';
 include 'inc/Event.php';
 Session::checkSession();
@@ -12,43 +13,34 @@ Session::destroy();
 $event = new Event();
 $allEvent = $event->getAllEvent();
 ?>
-<div class="container" style="margin-top: 40px;">
 
-  <?php 
+    <section id="app" class="event-list-top-padding" id="Uevent-list">
 
-    $loginmessage = Session::get("loginmessage");
+        <div class="container">
+            <?php
 
-    if (isset($loginmessage)) {
-      echo $loginmessage;
-    }
-    Session::set("loginmessage", NULL);
+            $loginmessage = Session::get("loginmessage");
 
-   ?>
-  
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h2>EventList<span class="pull-right">
-        <?php
-        $name = Session::get("name");
-        if (isset($name)) {
-        echo $name;
-        }
-        ?>
-      </span></h2>
-    </div>
-    <div class="panel-body">
-      <?php 
+            if (isset($loginmessage)) {
+                echo $loginmessage;
+            }
+            Session::set("loginmessage", NULL);
 
-        if (isset($eventdelete)) {
-          echo $eventdelete;
-        }
+            ?>
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2>Event List<span class="pull-right"><strong>Welcome! </strong>
 
-    ?>
-    <?php foreach ($allEvent as $eventlist) {
- ?>
-    <a type="button" class="btn btn-primary btn-block" href=""><?php echo $eventlist['event_name'] ?></a>
-    <?php } ?>
-    </div>
-  </div>
-</div>
+			</span></h2>
+                    </div>
+
+
+                    <div  class="panel-body" v-for="item in evenList">
+                        <a type="button" class="btn btn-primary btn-block" href="">{{item.title}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 <?php include 'partial/footer.php'; ?>

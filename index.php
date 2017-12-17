@@ -3,7 +3,7 @@ include "partial/header.php";
 include 'inc/User.php';
 Session::checkLogin();
 ?>
- <?php
+<?php
 
   	$user = new User();
   	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {

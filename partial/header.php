@@ -8,9 +8,14 @@ Session::init();
 <html>
 <head>
 	<title>Online Quiz System</title>
+
+    <!--All the css-->
 	<link rel="stylesheet" type="text/css" href="lib/css/bootstrap.min.css">
-	<!-- <link rel="stylesheet" type="text/css" href="lib/css/style.css"> -->
+<!--    <link rel="stylesheet" type="text/css" href="lib/css/style.css">-->
 	<link rel="stylesheet" href="lib/css/styleone.css">
+
+    <!--All the scripts-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-default">
