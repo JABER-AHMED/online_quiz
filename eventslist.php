@@ -9,10 +9,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
 Session::destroy();
 }
 ?>
-<?php
-$event = new Event();
-$allEvent = $event->getAllEvent();
-?>
+
 
     <section id="app" class="event-list-top-padding" id="Uevent-list">
 
@@ -37,7 +34,7 @@ $allEvent = $event->getAllEvent();
 
 
                     <div  class="panel-body" v-for="item in evenList">
-                        <a type="button" class="btn btn-primary btn-block" href="">{{item.title}}</a>
+                        <a type="button" class="btn btn-primary btn-block" href="">{{item.event_name}}</a>
                     </div>
                 </div>
             </div>

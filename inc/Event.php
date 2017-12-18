@@ -58,7 +58,6 @@ class Event {
 		$query = $this->db->pdo->prepare($sql);
 		$query->execute();
 		$result = $query->fetchAll();
-
 		return $result;
 	}
 
