@@ -1,12 +1,6 @@
 <?php
-// include 'inc/User.php';
+
 include 'Event.php';
-//include "Question.php";
-
-
-if (isset($_GET['action']) && $_GET['action'] == 'logout') {
-    Session::destroy();
-}
 
 if(isset($_GET['action']) && $_GET['action'] == 'read'){
     $event = new Event();
