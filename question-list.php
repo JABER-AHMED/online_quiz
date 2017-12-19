@@ -1,37 +1,33 @@
 <?php include "partial/adminheader.php"; 
       include "partial/adminsidebar.php";
-      include "inc/Event.php";
+      include "inc/Question.php";
 
       Session::checkSession();
 
-?>
+    if (isset($_GET['action']) && $_GET['action'] == 'logout') {
+      Session::destroy();
+    }
+    $question = new Question();
+    if (isset($_GET['id'])) {
+        $eventid = (int)$_GET['id'];
+    }
+    $getQbyEvent = $question->getQbyEvent($eventid);
 
-<?php
-if (isset($_GET['action']) && $_GET['action'] == 'logout') {
-  Session::destroy();
-}
-?>
-<?php
-$event = new Event();
-$allEvent = $event->getAllEvent();
-?>
-<?php 
+    if (isset($_GET['action']) && $_GET['action'] == 'edit') {
+          
+          $quesid = (int)$_GET['id'];
+
+          $questionUpdate = $question->getQuestionbyID($quesid);
+      }
 
       if (isset($_GET['action']) && $_GET['action'] == 'delete') {
           
-          $eventid = (int)$_GET['id'];
+          $quesid = (int)$_GET['id'];
 
-          $eventdelete = $event->eventDelete($eventid);
+          $questiondelete = $question->questionDelete($quesid);
       }
-
-      if (isset($_GET['action']) && $_GET['action'] == 'edit') {
-          
-          $eventid = (int)$_GET['id'];
-
-          $eventdelete = $event->getEventbyID($eventid);
-      }
-
-?>
+    
+    ?>
 
 <div id="content">
   <div id="content-header">
@@ -63,50 +59,21 @@ $allEvent = $event->getAllEvent();
                 </tr>
               </thead>
               <tbody>
+                <?php foreach ($getQbyEvent as $question) { ?>
                 <tr class="gradeX">
-                  <td>1</td>
-                  <td>what is java ?</td>
-                  <td>one</td>
-                  <td>two</td>
-                  <td>three</td>
-                  <td>four</td>
-                  <td>one</td>
-                  <td ><button type="edit"  class="btn btn-default"> Edit </button> <button type="delete"  class="btn btn-danger"> Delete</button></td>
-        
+                  <td><?php echo $question['question_id'] ?></td>
+                  <td><?php echo $question['question'] ?></td>
+                  <td><?php echo $question['option_one'] ?></td>
+                  <td><?php echo $question['option_two'] ?></td>
+                  <td><?php echo $question['option_three'] ?></td>
+                  <td><?php echo $question['option_four'] ?></td>
+                  <td><?php echo $question['correct_answer'] ?></td>
+                  <td >
+                    <a type="button" class="btn btn-default" href="update-quiz.php?action=edit&id=<?php echo $question['question_id']; ?>" name="edit"><i class="icon icon-edit"></i> Edit</a>
+                    <a type="button" class="btn btn-danger" href="question-list.php?action=delete&id=<?php echo $question['question_id'] ?>" name="delete"><i class="icon icon-trash"></i> Delete</a>
+                  </td>
                 </tr>
-                <tr class="gradeC">
-                  <td>2</td>
-                  <td>what is vue ?</td>
-                  <td>one</td>
-                  <td>two</td>
-                  <td>three</td>
-                  <td>four</td>
-                  <td>one</td>
-                  <td ><button type="edit"  class="btn btn-default"> Edit </button> <button type="delete"  class="btn btn-danger"> Delete</button></td>
-                </tr>
-                <tr class="gradeC">
-                  <td>3</td>
-                  <td>what is cpp ?</td>
-                  <td>one</td>
-                  <td>two</td>
-                  <td>three</td>
-                  <td>four</td>
-                   <td>one</td>
-                  <td ><button type="edit"  class="btn btn-default"> Edit </button> <button type="delete"  class="btn btn-danger"> Delete</button></td>
-                 
-                </tr>
-                <tr class="gradeC">
-                  <td>4</td>
-                  <td>what is english ?</td>
-                  <td>one</td>
-                  <td>two</td>
-                  <td>three</td>
-                  <td>four</td>
-                  <td>one</td>
-                 <td ><button type="edit"  class="btn btn-default"> Edit </button> <button type="delete"  class="btn btn-danger"> Delete</button></td>
-                  
-                </tr>
-                 
+                <?php } ?>
               </tbody>
             </table>
           </div>
@@ -115,13 +82,4 @@ $allEvent = $event->getAllEvent();
     </div>
   </div>
 </div>
-<!--Footer-part-->
-<div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Online Quiz Admin. </div>
-</div>
-<!--end-Footer-part-->
-
-
-
-
 <?php include "partial/adminfooter.php"; ?>

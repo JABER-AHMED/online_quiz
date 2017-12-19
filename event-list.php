@@ -29,15 +29,15 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
           
           $eventid = (int)$_GET['id'];
 
-          $eventdelete = $event->getEventbyID($eventid);
+          $eventEdit = $event->getEventbyID($eventid);
       }
 
-      if (isset($_GET['action']) && $_GET['action'] == 'view') {
+      // if (isset($_GET['action']) && $_GET['action'] == 'view') {
           
-          $eventid = (int)$_GET['id'];
+      //     $eventid = (int)$_GET['id'];
 
-          $viewQwithEvent = $event->getQuestionByEvent($eventid);
-      }
+      //     $questionView = $event->getQbyEvent($eventid);
+      // }
 
 ?>
 
