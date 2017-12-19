@@ -1,4 +1,4 @@
-<?php ob_start();
+<?php
 $filepath = realpath(dirname(__FILE__));
 include_once $filepath.'/../inc/Session.php';
 Session::init();
@@ -11,7 +11,7 @@ Session::init();
 
     <!--All the css-->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="/lib/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="/lib/css/bootstrap.min.css"> -->
     <!--<link rel="stylesheet" type="text/css" href="lib/css/style.css">-->
 	<link rel="stylesheet" href="lib/css/styleone.css">
 
