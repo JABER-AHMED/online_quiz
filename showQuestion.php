@@ -26,6 +26,14 @@ Session::checkSession();
                                     <input type="radio" :id="key" :name="value" :value="value" v-model="question.Answer">
                                     <label for="value">{{value}}</label>
                                 </div>
+                                <div v-if="index==3" >
+                                    <input type="radio" :id="key" :name="value" :value="value" v-model="question.Answer">
+                                    <label for="value">{{value}}</label>
+                                </div>
+                                <div v-if="index==4" >
+                                    <input type="radio" :id="key" :name="value" :value="value" v-model="question.Answer">
+                                    <label for="value">{{value}}</label>
+                                </div>
                             </div>
                         </div>
                         <button class="btn btn-primary" @click="sendAllAnswer()">Click to submit</button>

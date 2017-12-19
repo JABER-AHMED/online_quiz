@@ -9,13 +9,14 @@ if(isset($_GET['action']) && $_GET['action'] == 'read'){
    // print_r($res['events']);
 }
 
-/*if(isset($_GET['action']) && $_GET['action'] == 'readquestion'){
+if(isset($_GET['action']) && $_GET['action'] == 'readQuestion'){
+    include 'Question.php';
     $question = new Question();
     $allQuestion = $question->getAllQuestion();
     $res = array('error' => false);
     $res['questions'] = $allQuestion;
-    print_r($allQuestion);
-}*/
+    //print_r($allQuestion);
+}
 
 header("Content-type: application/json");
 echo json_encode($res);

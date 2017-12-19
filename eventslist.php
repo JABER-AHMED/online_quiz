@@ -34,7 +34,8 @@ Session::destroy();
 
 
                     <div  class="panel-body" v-for="item in evenList">
-                        <a type="button" class="btn btn-primary btn-block" href="">{{item.event_name}}</a>
+                        {{item}}
+                        <a type="button" class="btn btn-primary btn-block" @click="generateQuestion(item.event_id)" href="showQuestion.php">{{item.event_name}}</a>
                     </div>
                 </div>
             </div>
