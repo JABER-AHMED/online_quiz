@@ -1,4 +1,4 @@
-<?php 
+<?php ob_start();
 
 include_once 'Session.php';
 include 'Database.php';

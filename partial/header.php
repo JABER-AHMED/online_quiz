@@ -1,4 +1,4 @@
-<?php
+<?php ob_start();
 $filepath = realpath(dirname(__FILE__));
 include_once $filepath.'/../inc/Session.php';
 Session::init();
