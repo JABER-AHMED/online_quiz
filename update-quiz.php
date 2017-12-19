@@ -1,6 +1,7 @@
 <?php include "partial/adminheader.php"; 
       include "partial/adminsidebar.php";
-      include "inc/Event.php";
+      //include "inc/Event.php";
+      include "inc/Question.php";
 
       Session::checkSession();
 
@@ -11,113 +12,103 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
   Session::destroy();
 }
 ?>
-<?php
-$event = new Event();
-$allEvent = $event->getAllEvent();
-?>
 <?php 
-
-      if (isset($_GET['action']) && $_GET['action'] == 'delete') {
-          
-          $eventid = (int)$_GET['id'];
-
-          $eventdelete = $event->eventDelete($eventid);
+  $question = new Question();
+  if (isset($_GET['id'])) {
+         $quesid = (int)$_GET['id'];
       }
+  if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['updateQues'])) {
 
-      if (isset($_GET['action']) && $_GET['action'] == 'edit') {
-          
-          $eventid = (int)$_GET['id'];
-
-          $eventdelete = $event->getEventbyID($eventid);
-      }
+      $updateQues = $question->updateQuestion($quesid, $_POST);
+  }
+  $questioninfo = $question->getQuestionbyID($quesid);
+  $eventID = $question->getEventID();
 
 ?>
-
+<div id="create-quiz">
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Tables</a> </div>
-    <h1>Update Question List</h1>
+    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Form elements</a> <a href="#" class="current">Form wizard</a> </div>
+    <h1>Create Quiz</h1>
   </div>
-  <div class="container-fluid">
-    <hr>
+  <div class="container-fluid"><hr>
     <div class="row-fluid">
       <div class="span12">
         <div class="widget-box">
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-            <h5>Data table</h5>
+          <div class="widget-title"> <span class="icon"> <i class="icon-pencil"></i> </span>
+          <?php if (isset($updateQues)) {
+              echo $updateQues;
+          } ?>
           </div>
           <div class="widget-content nopadding">
-            <table class="table table-bordered data-table">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Question Name</th>
-                  <th>Option 1</th>
-                  <th>Option 2</th>
-                  <th>Option 3</th>
-                  <th>Option 4</th>
-                  <th>Correct Ans</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="gradeX">
-                  <td>1</td>
-                  <td>what is java ?</td>
-                  <td>one</td>
-                  <td>two</td>
-                  <td>three</td>
-                  <td>four</td>
-                  <td>one</td>
-                  <td ><button type="edit" class="btn btn-default"> Edit </button> <button type="delete"  class="btn btn-danger"> Delete</button></td>
-                </tr>
-                <tr class="gradeC">
-                  <td>2</td>
-                  <td>what is vue ?</td>
-                  <td>one</td>
-                  <td>two</td>
-                  <td>three</td>
-                  <td>four</td>
-                  <td>one</td>
-                  <td ><button type="edit"  class="btn btn-default"> Edit </button> <button type="delete"  class="btn btn-danger">Delete</button></td>
-                </tr>
-                <tr class="gradeC">
-                  <td>3</td>
-                  <td>what is cpp ?</td>
-                  <td>one</td>
-                  <td>two</td>
-                  <td>three</td>
-                  <td>four</td>
-                  <td>one</td>
-                  <td ><button type="edit"  class="btn btn-default">Edit </button> <button type="delete" class="btn btn-danger">Delete</button></td>
-                </tr>
-                <tr class="gradeC">
-                  <td>4</td>
-                  <td>what is english ?</td>
-                  <td>one</td>
-                  <td>two</td>
-                  <td>three</td>
-                  <td>four</td>
-                  <td>one</td>
-                  <td ><button type="edit" class="btn btn-default">Edit </button> <button type="delete" class="btn btn-danger">Delete</button></td>
-                </tr>
-                 
-              </tbody>
-            </table>
+            <form id="form-wizard" class="form-horizontal" method="post">
+              <div id="form-wizard-1" class="step">
+                <div class="control-group">
+                  <label class="control-label">Event Title:</label>
+                  <div class="controls">
+
+
+                    <select name="event_id" class="form-control-select">
+                    <?php if(!count($eventID)){?>
+                      <option>Select</option>
+                    <?php } else { ?> <!-- end of if and start of else -->
+                      <option checked>Select</option>
+                    <?php foreach ($eventID as $e ) { ?> <!--foreach start -->
+                      <option value="<?php echo $e['event_id']; ?>"><?php echo  $e['event_name'];?></option>
+                      
+                    <?php } } ?>  <!--end of foreach and else -->
+
+                    </select>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">Question:</label>
+                  <div class="controls">
+                    <input type="text" name="question" class="form-control"  value="<?php echo $questioninfo->question ?>" />
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">Option 1:</label>
+                  <div class="controls">
+                    <input type="text" name="option_one" class="form-control" value="<?php echo $questioninfo->option_one ?>"/>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">Option 2:</label>
+                  <div class="controls">
+                    <input type="text" name="option_two" class="form-control" value="<?php echo $questioninfo->option_two ?>"/>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">Option 3:</label>
+                  <div class="controls">
+                    <input type="text" name="option_three" class="form-control" value="<?php echo $questioninfo->option_three ?>"/>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">Option 4:</label>
+                  <div class="controls">
+                    <input type="text" name="option_four" class="form-control" value="<?php echo $questioninfo->option_four ?>"/>
+                  </div>
+                </div>
+                 <div class="control-group">
+                  <label class="control-label">Correct Answer:</label>
+                  <div class="controls">
+                    <input type="text" name="correct_answer" class="form-control" value="<?php echo $questioninfo->correct_answer ?>"/>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <div class="controls">
+                    <button type="submit" name="updateQues" class="btn btn-block btn-primary form-control-button">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<!--Footer-part-->
-<div class="row-fluid">
-  <div id="footer" class="span12"> 2017 &copy; Online Quiz Admin. </div>
 </div>
-<!--end-Footer-part-->
-
-
-
-
 <?php include "partial/adminfooter.php"; ?>
