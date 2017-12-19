@@ -14,9 +14,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
 ?>
 <?php 
   $question = new Question();
-  if (isset($_GET['action']) && $_GET['action'] == 'questionCreate') {
+  if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['AddQues'])) {
 
-      $_POST = json_decode(file_get_contents('php://input'), true);
       $addQues = $question->addQuestion($_POST);
   }
   $eventID = $question->getEventID();
@@ -38,7 +37,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
           } ?>
           </div>
           <div class="widget-content nopadding">
-            <form id="form-wizard" class="form-horizontal">
+            <form id="form-wizard" class="form-horizontal" method="post">
               <div id="form-wizard-1" class="step">
                 <div class="control-group">
                   <label class="control-label">Event Title:</label>
@@ -61,42 +60,42 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
                 <div class="control-group">
                   <label class="control-label">Question:</label>
                   <div class="controls">
-                    <input type="text" class="form-control"  v-model="question"/>
+                    <input type="text" name="question" class="form-control"/>
                   </div>
                 </div>
                 <div class="control-group">
                   <label class="control-label">Option 1:</label>
                   <div class="controls">
-                    <input type="text" class="form-control" v-model="option_one"/>
+                    <input type="text" name="option_one" class="form-control"/>
                   </div>
                 </div>
                 <div class="control-group">
                   <label class="control-label">Option 2:</label>
                   <div class="controls">
-                    <input type="text" class="form-control" v-model="option_two"/>
+                    <input type="text" name="option_two" class="form-control"/>
                   </div>
                 </div>
                 <div class="control-group">
                   <label class="control-label">Option 3:</label>
                   <div class="controls">
-                    <input type="text" class="form-control" v-model="option_three"/>
+                    <input type="text" name="option_three" class="form-control"/>
                   </div>
                 </div>
                 <div class="control-group">
                   <label class="control-label">Option 4:</label>
                   <div class="controls">
-                    <input type="text" class="form-control" v-model="option_four"/>
+                    <input type="text" name="option_four"  class="form-control" />
                   </div>
                 </div>
                  <div class="control-group">
                   <label class="control-label">Correct Answer:</label>
                   <div class="controls">
-                    <input type="text" class="form-control" v-model="correct_answer"/>
+                    <input type="text" name="correct_answer" class="form-control"/>
                   </div>
                 </div>
                 <div class="control-group">
                   <div class="controls">
-                    <button type="submit" @click.prevent="AddQues" class="btn btn-block btn-primary form-control-button">Submit</button>
+                    <button type="submit" name="AddQues" class="btn btn-block btn-primary form-control-button">Submit</button>
                   </div>
                 </div>
               </div>

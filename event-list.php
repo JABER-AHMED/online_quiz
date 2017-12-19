@@ -1,8 +1,8 @@
-<?php ob_start();
-include "partial/adminheader.php";
-include "partial/adminsidebar.php";
-include "inc/Event.php";
-Session::checkSession();
+<?php include "partial/adminheader.php"; 
+      include "partial/adminsidebar.php";
+      include "inc/Event.php";
+
+      Session::checkSession();
 
 ?>
 
@@ -11,6 +11,11 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
   Session::destroy();
 }
 ?>
+<?php
+  $event = new Event();
+  $allEvent = $event->getAllEvent();
+  
+  ?>
 <?php 
 
       if (isset($_GET['action']) && $_GET['action'] == 'delete') {
@@ -25,6 +30,13 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
           $eventid = (int)$_GET['id'];
 
           $eventdelete = $event->getEventbyID($eventid);
+      }
+
+      if (isset($_GET['action']) && $_GET['action'] == 'view') {
+          
+          $eventid = (int)$_GET['id'];
+
+          $viewQwithEvent = $event->getQuestionByEvent($eventid);
       }
 
 ?>
@@ -50,7 +62,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
         }
 
     ?>
-        <div id="event-list" class="widget-box">
+        <div id="eventslist" class="widget-box">
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
             <h5>Data table</h5>
           </div>
@@ -65,16 +77,20 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
                 </tr>
               </thead>
               <tbody>
-            <tr v-for="item in eventList">
-              <td>{{ item.event_id}}</td>
-              <td>{{item.event_name}}</td>
-              <td>{{item.event_date}}</td>
+             <?php
+                foreach ($allEvent as $event) {
+            ?>
+            <tr>
+              <td><?php echo $event['event_id'] ?></td>
+              <td><?php echo $event['event_name'] ?></td>
+              <td><?php echo $event['event_date'] ?></td>
               <td>
-                <a type="button" class="btn btn-default" name="edit"><i class="icon icon-edit"></i> Edit</a>
-                <a type="button" class="btn btn-danger" name="delete"><i class="icon icon-trash"></i> Delete</a>
-                <a type="button" class="btn btn-success" name="view"><i class="icon icon-eye-open"></i> View Questions</a>
+                <a type="button" class="btn btn-default" href="update-event.php?action=edit&id=<?php echo $event['event_id']; ?>" name="edit"><i class="icon icon-edit"></i> Edit</a>
+                <a type="button" class="btn btn-danger" href="event-list.php?action=delete&id=<?php echo $event['event_id'] ?>" name="delete"><i class="icon icon-trash"></i> Delete</a>
+                <a type="button" class="btn btn-success" href="question-list.php?action=view&id=<?php echo $event['event_id'] ?>" name="view"><i class="icon icon-eye-open"></i> View Questions</a>
               </td>
             </tr>
+            <?php } ?> 
               </tbody>
             </table>
           </div>
