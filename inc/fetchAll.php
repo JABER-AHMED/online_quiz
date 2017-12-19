@@ -1,8 +1,14 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php ob_start();
 // include 'inc/User.php';
 /*include 'Event.php';*/
 include "Question.php";
+=======
+<?php
+
+include 'Event.php';
+>>>>>>> c9921684105149f9054f29759fb628f4b1aeee5c
 =======
 <?php
 
